@@ -63,6 +63,11 @@ contract BaseERC20 {
         setRole(owner, OWNER_ROLE, true); // 设置用户为所有者角色
     }
 
+    // 查询用户是否是所有者的方法
+    function isOwner(address owner) public view returns (bool) {
+        return _roles[owner][OWNER_ROLE]; // 返回用户是否是所有者
+    }
+
     // 移除所有者的方法
     function removeOwner(address owner) public onlyOwner {
         setRole(owner, OWNER_ROLE, false); // 移除用户的所有者角色
